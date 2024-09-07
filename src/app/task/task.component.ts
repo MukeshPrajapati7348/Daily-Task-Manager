@@ -24,15 +24,20 @@ export class TaskComponent implements OnInit {
     })
   }
 
-  //To add tasks in todos array
-  addToDo() {
+  updateDescTitle(){
     //To make the first character of task to upper case
     let todoTask = this.todoForm.value.task
     let description = todoTask.charAt(0).toUpperCase();
     //To add the remaining characters from the task
-    description += todoTask.substr(1,todoTask.length);
+    return description += todoTask.substr(1,todoTask.length);
+  }
+
+  //To add tasks in todos array
+  addToDo() {
+    //To make the first character of task to upper case
+    let updatedDescription = this.updateDescTitle();
     this.todos.push({
-      description: description,
+      description: updatedDescription,
       done:false
     });
     this.todoForm.reset();
@@ -40,7 +45,7 @@ export class TaskComponent implements OnInit {
 
   //Update the already added todo task
   updateToDo() {
-    this.todos[this.updateId].description = this.todoForm.value.task;
+    this.todos[this.updateId].description = this.updateDescTitle();
     this.updateIconEnabled = false;
     this.todoForm.reset();
   }

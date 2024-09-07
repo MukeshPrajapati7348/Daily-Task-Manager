@@ -1,6 +1,6 @@
-<div class="container-fluid" style="height: 100%">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3" style="background-color: #4b76b2; height: 100vh">
+        <div class="col-md-3" style="background-color: #4b76b2;">
             <mat-card class="mt-3">
                 <form class="form" [formGroup]="todoForm">
                     <mat-form-field appearance="outline">
@@ -26,18 +26,19 @@
                     <!-- To do -->
                     <div class="example-container">
                         <h2>TO DO {{ todos.length > 0 ? "- " + todos.length : "" }}</h2>
-
-                        <div cdkDropList [cdkDropListData]="todos" class="example-list"
-                            (cdkDropListDropped)="drop($event)">
-                            <div class="example-box" *ngFor="let item of todos; let i = index" cdkDrag>
-                                {{ item.description }}
-                                <div class="actionIcons">
-                                    <button mat-icon-button color="warn" (click)="deletetoDoTask(i)">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
-                                    <button mat-icon-button color="primary" (click)="editToDo(i)">
-                                        <mat-icon>edit</mat-icon>
-                                    </button>
+                        <div class="todo-container">
+                            <div cdkDropList [cdkDropListData]="todos" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of todos; let i = index" cdkDrag>
+                                    {{ item.description }}
+                                    <div class="actionIcons">
+                                        <button mat-icon-button color="warn" (click)="deletetoDoTask(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="primary" (click)="editToDo(i)">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -50,15 +51,16 @@
                             IN PROGRESS
                             {{ inprogress.length > 0 ? "- " + inprogress.length : "" }}
                         </h2>
-
-                        <div cdkDropList [cdkDropListData]="inprogress" class="example-list"
-                            (cdkDropListDropped)="drop($event)">
-                            <div class="example-box" *ngFor="let item of inprogress; let i = index" cdkDrag>
-                                {{ item.description }}
-                                <div class="actionIcons">
-                                    <button mat-icon-button color="warn" (click)="deleteinProgressTask(i)">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
+                        <div class="inprogress-container">
+                            <div cdkDropList [cdkDropListData]="inprogress" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of inprogress; let i = index" cdkDrag>
+                                    {{ item.description }}
+                                    <div class="actionIcons">
+                                        <button mat-icon-button color="warn" (click)="deleteinProgressTask(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,19 +70,20 @@
                     <!-- done -->
                     <div class="example-container">
                         <h2>DONE {{ done.length > 0 ? "- " + done.length : "" }}</h2>
-
-                        <div cdkDropList [cdkDropListData]="done" class="example-list"
-                            (cdkDropListDropped)="drop($event)">
-                            <div class="example-box" *ngFor="let item of done; let i = index" cdkDrag>
-                                {{ item.description }}
-                                <div class="actionIcons">
-                                    <button mat-icon-button color="warn" (click)="deleteDoneTask(i)">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
-                                    <button mat-icon-button color="secondary"
-                                        style="color: rgb(38, 208, 38); cursor: default">
-                                        <mat-icon>check_circle</mat-icon>
-                                    </button>
+                        <div class="done-container">
+                            <div cdkDropList [cdkDropListData]="done" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of done; let i = index" cdkDrag>
+                                    {{ item.description }}
+                                    <div class="actionIcons">
+                                        <button mat-icon-button color="warn" (click)="deleteDoneTask(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                        <button mat-icon-button color="secondary"
+                                            style="color: rgb(38, 208, 38); cursor: default">
+                                            <mat-icon>check_circle</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
